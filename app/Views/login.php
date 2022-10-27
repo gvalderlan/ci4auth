@@ -44,7 +44,7 @@
                         <form method="post">
                         
                         <!-- INCLUIR(DESCOMENTAR) A FUNÇÃO csrf_field(); -->
-                        <?php //echo csrf_field(); ?>
+                        <?php echo csrf_field(); ?>
                         
                         <!--   if you want to have the card without animation please remove the ".card-hidden" class   -->
                         <div class="card card-hidden" style="position: fixed; min-height: 480px; width: 360px; margin-top: 10px; padding-bottom: 10px;">
@@ -53,9 +53,9 @@
                                 <div class="content">
                                     <div class="form-group">
                                     <span style="color: red;">
-                                        <!-- INCLUIR A VARIÁVEL $msg 
+                                        <!-- INCLUIR A VARIÁVEL $msg -->
                                             <?php echo $msg ?? ''  ?>
-                                        -->
+                                        
                                         </span>
                                     </div>
                                     <div class="form-group">

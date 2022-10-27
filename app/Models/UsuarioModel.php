@@ -40,7 +40,7 @@ class UsuarioModel extends Model
 
     protected function hashSenha($data)
     {
-        $data['data ']['senha'] = password_hash($data['data ']['senha'], PASSWORD_DEFAULT);
+        $data['data']['senha'] = password_hash($data['data']['senha'], PASSWORD_DEFAULT);
 
         return $data;
     }

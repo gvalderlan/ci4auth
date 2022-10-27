@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\UsuarioModel;
 use Exception;
 
 class Registrar extends BaseController
@@ -12,11 +13,14 @@ class Registrar extends BaseController
 
         $data['msg'] = '';
         if($this->request->getMethod() === 'post'){
+            
             $usuarioModel = model("UsuarioModel");
+            
             try{
+                
                 $usuarioData =  $this->request->getPost();
                 $usuarioData['perfil'] = 'usuario';//perfil default
-                //var_dump($usuarioData);
+                
                 if ($usuarioModel->save($usuarioData)){
                     $data['msg'] = 'Usuário criado com sucesso!';
                 }else{

@@ -2,6 +2,8 @@
 
 namespace Config;
 
+use App\Controllers\Logout;
+
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
 
@@ -36,8 +38,19 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('login', 'Login::index');
+$routes->match(['get', 'post'], 'login', 'Login::index');
 $routes->match(['get', 'post'], 'registrar', 'Registrar::index');
+$routes->get('logout', 'Logout::index');
+
+//Admin
+$adminFilter = 'auth:admin,usuario';
+$routes->group('admin', ['filter'=>$adminFilter], static function($routes){
+    $routes->get('', 'Admin\Home::index');
+    $routes->group('usuarios', ['filter'=>'auth:admin'], static function($routes){
+        $routes->get('', 'Admin\Usuarios::index');
+        $routes->get('(:any)', 'Admin\Usuarios::$1');
+    });
+});
 
 /*
  * --------------------------------------------------------------------
